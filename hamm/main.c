@@ -1,24 +1,9 @@
 #include <assert.h>
-#include <ctype.h>
 #include <stdio.h>
 
+#include "../common/util.h"
+
 #define BUFSIZE 1001
-
-static void trim_r(char *s);
-
-static void
-trim_r(char *s)
-{
-	char *end;
-
-	end = s;
-	while (*end != '\0')
-		end++;
-	end--;
-	while (isspace(*end) || *end == '\n' || *end == '\r')
-		end--;
-	*(end + 1) = '\0';
-}
 
 int
 main()

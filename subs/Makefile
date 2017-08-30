@@ -1,6 +1,6 @@
-# rosalind-hamm: calculate the hamming distance between two strings
+# rosalind-subs: finds occurances of a substring
 
-APP = hamm
+APP := subs
 SRC = main.c
 OBJ = ${SRC:.c=.o}
 EXTERN_OBJ = "../common/util.o"

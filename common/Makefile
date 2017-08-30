@@ -3,7 +3,7 @@
 include ../config.mk
 
 NAME = common
-SRC = fasta.c
+SRC = $(wildcard *.c)
 OBJ = ${SRC:.c=.o}
 
 all: options ${OBJ}
