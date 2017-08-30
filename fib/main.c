@@ -1,4 +1,3 @@
-#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -6,8 +5,10 @@ static long
 read_number(const char *src)
 {
 	long n;
-	n = strtol(src, NULL, 10);
-	if (errno) { fprintf(stderr, "%s is not a valid number\n", src);
+	char *end;
+	n = strtol(src, &end, 10);
+	if (src == end) {
+		fprintf(stderr, "%s is not a valid number\n", src);
 		exit(1);
 	}
 	return n;
