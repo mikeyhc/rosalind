@@ -30,7 +30,6 @@ main()
 	assert(fgets(first, BUFSIZE, stdin));
 	assert(fgets(second, BUFSIZE, stdin));
 
-
 	fp = first;
 	sp = second;
 	trim_r(fp);
