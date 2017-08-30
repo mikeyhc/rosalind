@@ -8,4 +8,5 @@ my $exit = 0;
 my $sample = "AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA";
 my $out = `echo $sample | ./rosalind-prot`;
 $exit++ if ($out ne "MAMAPRTEINSTRING\n");
+$exit++ unless system("echo x | ./rosalind-prot");
 exit $exit;
