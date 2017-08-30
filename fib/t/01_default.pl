@@ -9,3 +9,4 @@ my $out = `./rosalind-fib 5 3`;
 $exit++ if $out ne "19\n";
 $exit++ unless system('./rosalind-fib');
 $exit++ unless system('./rosalind-fib a b');
+exit $exit;
