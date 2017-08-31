@@ -11,9 +11,13 @@ int
 main()
 {
 	char buffer[BUFSIZE];
+	char *prot;
 
 	assert(fgets(buffer, BUFSIZE, stdin));
 	trim_r(buffer);
-	printf("%s\n", rna_to_protein(buffer));
+	prot = rna_to_protein(buffer);
+	if (!prot)
+		return 1;
+	printf("%s\n", prot);
 	return 0;
 }

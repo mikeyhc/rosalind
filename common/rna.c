@@ -16,7 +16,7 @@ typedef struct rna_lookup_node {
 
 RnaLookupNode *lookup = NULL;
 
-static size_t
+static int
 rna_index(char c)
 {
 	switch (c) {
@@ -29,7 +29,7 @@ rna_index(char c)
 	case 'U':
 		return 3;
 	}
-	abort();
+	return -1;
 }
 
 static void
@@ -139,11 +139,21 @@ char
 codon_to_amino(const char *codon)
 {
 	RnaLookupNode *first, *second, *third;
+	int idx;
 
 	build_table();
-	first = &lookup->data.nodes[rna_index(codon[0])];
-	second = &first->data.nodes[rna_index(codon[1])];
-	third = &second->data.nodes[rna_index(codon[2])];
+	idx = rna_index(codon[0]);
+	if (idx < 0)
+		return -1;
+	first = &lookup->data.nodes[idx];
+	idx = rna_index(codon[1]);
+	if (idx < 0)
+		return -1;
+	second = &first->data.nodes[idx];
+	idx = rna_index(codon[2]);
+	if (idx < 0)
+		return -1;
+	third = &second->data.nodes[idx];
 	return third->data.end;
 }
 
@@ -156,6 +166,8 @@ rna_to_protein(char *rna)
 	assert(ret);
 	for (s = ret; *rna != '\0'; rna += 3, s++) {
 		*s = codon_to_amino(rna);
+		if (*s < 0)
+			return NULL;
 		if (!*s)
 			break;
 	}
