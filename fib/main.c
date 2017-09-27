@@ -1,18 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static long
-read_number(const char *src)
-{
-	long n;
-	char *end;
-	n = strtol(src, &end, 10);
-	if (src == end) {
-		fprintf(stderr, "%s is not a valid number\n", src);
-		exit(1);
-	}
-	return n;
-}
+#include "../common/util.h"
 
 int
 main(int argc, char **argv)

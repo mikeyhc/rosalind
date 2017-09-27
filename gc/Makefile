@@ -7,3 +7,4 @@ OBJ = ${SRC:.c=.o}
 
 include ../config.mk
 include ../default.mk
+include ../binary.mk

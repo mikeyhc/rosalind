@@ -7,3 +7,4 @@ EXTERN_OBJ = "../common/fasta.o"
 
 include ../config.mk
 include ../default.mk
+include ../binary.mk

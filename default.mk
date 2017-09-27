@@ -1,7 +1,8 @@
-NAME = rosalind-${APP}
 TESTS = $(wildcard t/*.pl)
+TEST_SRC = $(wildcard t/*c)
+TEST_BIN = ${TEST_SRC:.c=}
 
-all: options ${NAME}
+all: options ${OBJ}
 
 options:
 	@echo ${NAME} build options:
@@ -17,19 +18,17 @@ options:
 ${EXTERN_OBJ}:
 	make -C ../common
 
-${NAME}: ${OBJ} ${EXTERN_OBJ}
+${TEST_BIN}: ${TEST_BIN}.c ${OBJ}
 	@echo CC -o $@
-	@${CC} -o $@ $^ ${LDFLAGS}
+	@${CC} -o $@ $^ ${CFLAGS} ${LDFLAGS} -O0
 
-test: all
+test: all ${TEST_BIN}
 	@echo TEST ${NAME}
-	@for test in ${TESTS}; do \
-		$$test; \
-	done
-	@${COV} ${SRC}
+	@for test in ${TESTS} ${TEST_BIN}; do $$test; done
+	@${COV} ${SRC} 1>/dev/null
 
 clean:
 	@echo cleaning
-	@rm -f ${NAME} ${OBJ} *.gc??
+	@rm -f ${NAME} ${OBJ} *.gc?? ${TEST_BIN}
 
 .PHONY: all options test clean

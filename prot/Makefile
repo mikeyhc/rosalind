@@ -7,3 +7,4 @@ EXTERN_OBJ = "../common/rna.o" "../common/util.o"
 
 include ../config.mk
 include ../default.mk
+include ../binary.mk
