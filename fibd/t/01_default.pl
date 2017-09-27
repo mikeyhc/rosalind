@@ -5,9 +5,11 @@ use warnings;
 use strict;
 
 my $exit = 0;
-my $sample = "AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAG"
-    . "AGTGTCTGATAGCAGC";
-my $out = `echo $sample | ./rosalind-dna`;
-$exit++ if ($out ne "20 12 17 21\n");
-$exit++ unless (system("echo 0 | ./rosalind-dna"));
+my $out = `./rosalind-fibd 6 3`;
+$exit++ if ($out ne "4\n");
+$out = `./rosalind-fibd 96 17`;
+$exit++ if ($out ne "51159459138167757395\n");
+$exit++ unless (system("./rosalind-fibd abc"));
+$exit++ unless (system("./rosalind-fibd 2 xyz"));
+$exit++ unless (system("./rosalind-fibd abc 2"));
 exit $exit;
