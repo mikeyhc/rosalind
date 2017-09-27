@@ -25,7 +25,7 @@ ${TEST_BIN}: ${TEST_BIN}.c ${OBJ}
 test: all ${TEST_BIN}
 	@echo TEST ${NAME}
 	@for test in ${TESTS} ${TEST_BIN}; do $$test; done
-	@${COV} ${SRC} 1>/dev/null
+	@${COV} ${SRC} ${TEST_SRC} 1>/dev/null
 
 clean:
 	@echo cleaning
