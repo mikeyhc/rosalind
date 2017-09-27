@@ -29,6 +29,6 @@ test: all ${TEST_BIN}
 
 clean:
 	@echo cleaning
-	@rm -f ${NAME} ${OBJ} *.gc?? ${TEST_BIN}
+	@rm -f ${NAME} ${OBJ} *.gc?? ${TEST_BIN} vgcore.*
 
 .PHONY: all options test clean
