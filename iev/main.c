@@ -28,7 +28,7 @@ main(int argc, char **argv)
 
 	/* to trim trailing 0's */
 	sprintf(buf, "%f", (dd + dh + dr + (hh * 0.75) + (hr * 0.5)) * 2);
-	for (len = strlen(buf) - 1; buf[len] == '0'; len--) ;
+	for (len = strlen(buf) - 1; buf[len] == '0' || buf[len] == '.'; len--);
 	buf[len + 1] = '\0';
 	printf("%s\n", buf);
 
