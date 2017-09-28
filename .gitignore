@@ -64,3 +64,8 @@ dkms.conf
 
 # vg dumps
 vgcore.*
+
+# test binaries
+*/t/*
+!*/t/*.*
+*/t/*.sw[op]
